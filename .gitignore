@@ -2,3 +2,6 @@
 /cache
 /chroot
 /local
+/.lock
+/.build
+
