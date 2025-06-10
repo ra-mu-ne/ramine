@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+apt-get update
+apt-get install -y lxde lxdm xorg fonts-noto fcitx5 fcitx5-mozc fcitx5-config-qt
+
+USER_HOME="/home/live"
+
+cat <<EOF > "${USER_HOME}/.profile"
+if [ -z "\$DISPLAY" ] && [ "\$(tty)" = "/dev/tty1" ]; then
+    startx
+fi
+EOF
+
+cat <<EOF > "${USER_HOME}/.xinitrc"
+exec startlxde
+EOF
+
+chmod +x "${USER_HOME}/.xinitrc"
+chown live:live "${USER_HOME}/.profile" "${USER_HOME}/.xinitrc"
+
+

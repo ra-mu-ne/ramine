@@ -1,0 +1,36 @@
+#!/bin/bash
+set -e
+
+echo "==== LXDM hook start ====" >> /tmp/hook-debug.log
+
+# LXDMインストール
+apt-get update
+apt-get install -y lxdm
+
+ln -sf /lib/systemd/system/lxdm.service /etc/systemd/system/display-manager.service
+
+# lxdm.conf作成
+cat <<EOF > "/etc/lxdm/lxdm.conf"
+[base]
+autologin=live
+skip_password=1
+session=/usr/bin/startlxde
+
+[display]
+gtk_theme=Clearlooks
+bg=/usr/share/images/desktop-base/desktop-background
+bottom_pane=1
+lang=1
+keyboard=0
+theme=Industrial
+
+[input]
+
+[userlist]
+disable=0
+white=
+black=
+EOF
+
+
+echo "==== LXDM hook end ====" >> /tmp/hook-debug.log
