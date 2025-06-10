@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+ln -sf /lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
+
+groupadd -r autologin
+gpasswd -a live autologin
+
+cat <<EOF > "/etc/lightdm/lightdm.conf"
+[Seat:*]
+autologin-user=live
+autologin-user-timeout=0
+autologin-session=mate-session
+greeter-session=lightdm-gtk-greeter
+greeter-hide-users=false
+greeter-allow-guest=false
+EOF

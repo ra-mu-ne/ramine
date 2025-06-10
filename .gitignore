@@ -1,7 +1,9 @@
 /auto
 /cache
-/chroot
+/chroot*
 /local
+/binary*
 /.lock
 /.build
+/ramine-*
 

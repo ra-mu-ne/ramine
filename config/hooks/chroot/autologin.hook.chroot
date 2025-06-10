@@ -14,7 +14,7 @@ cat <<EOF > "/etc/lxdm/lxdm.conf"
 [base]
 autologin=live
 skip_password=1
-session=/usr/bin/startlxde
+session=/usr/bin/mate-session
 
 [display]
 gtk_theme=Clearlooks

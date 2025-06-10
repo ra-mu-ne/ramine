@@ -1,0 +1,25 @@
+#!/bin/bash
+set -e
+
+# liveユーザー作成 (パスワードなし、ホームディレクトリ作成)
+useradd -m -s /bin/bash live
+
+# パスワードを空に設定（ログイン可能にする）
+passwd -d live
+
+# パスワード無しsudo許可
+echo "live ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/live
+chmod 0440 /etc/sudoers.d/live
+
+# デフォルトグループ追加
+usermod -aG sudo,adm,cdrom,dip,plugdev,audio,video,netdev live
+
+# Live環境用の追加設定
+# ホームディレクトリの権限設定
+chown -R live:live /home/live
+chmod 755 /home/live
+
+sudo -u live mkdir -p /home/live/Desktop
+sudo -u live mkdir -p /home/live/Documents
+sudo -u live mkdir -p /home/live/Downloads
+

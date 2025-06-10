@@ -1,4 +1,9 @@
 vim
 neovim
+wget
+curl
+gnupg
+flatpak
+snapd
 
 

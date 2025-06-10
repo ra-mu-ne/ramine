@@ -1,12 +1,16 @@
 task-japanese
 
-lxde
-lxdm
+mate-desktop-environment
+lightdm
+lightdm-gtk-greeter
 xorg
 
-fonts-noto
+mpv
+strawberry
+
 
 fcitx5
 fcitx5-mozc
 fcitx5-config-qt
 
+fonts-noto

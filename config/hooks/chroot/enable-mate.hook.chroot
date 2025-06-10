@@ -2,7 +2,7 @@
 set -e
 
 apt-get update
-apt-get install -y lxde lxdm xorg fonts-noto fcitx5 fcitx5-mozc fcitx5-config-qt
+apt-get install -y lxdm xorg fonts-noto fcitx5 fcitx5-mozc fcitx5-config-qt
 
 USER_HOME="/home/live"
 
@@ -13,7 +13,7 @@ fi
 EOF
 
 cat <<EOF > "${USER_HOME}/.xinitrc"
-exec startlxde
+exec mate-session
 EOF
 
 chmod +x "${USER_HOME}/.xinitrc"
