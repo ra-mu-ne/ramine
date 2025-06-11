@@ -1,12 +1,12 @@
 label live-@FLAVOUR@
-	menu label ^Live system (@FLAVOUR@)
+	menu label ^Ramine Linux Live (@FLAVOUR@)
 	menu default
 	linux @LINUX@
 	initrd @INITRD@
 	append @APPEND_LIVE@
 
 label live-@FLAVOUR@-failsafe
-	menu label Live system (@FLAVOUR@ fail-safe mode)
+	menu label Ramine Linux Live (@FLAVOUR@ fail-safe mode)
 	linux @LINUX@
 	initrd @INITRD@
 	append @APPEND_LIVE_FAILSAFE@
