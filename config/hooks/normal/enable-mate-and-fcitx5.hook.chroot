@@ -1,0 +1,34 @@
+#!/bin/bash
+set -e
+
+apt-get update
+apt-get install -y xorg fonts-noto fcitx5 fcitx5-mozc fcitx5-config-qt
+
+# configure fcitx5
+cat <<EOF > "/etc/xdg/autostart/fcitx5.desktop"
+[Desktop Entry]
+Type=Application
+Name=Fcitx5
+Exec=fcitx5
+Icon=fcitx
+X-GNOME-Autostart-enabled=true
+Comment=Fcitx5 Input Method Framework
+EOF
+
+USER_HOME="/home/live"
+
+cat <<EOF > "${USER_HOME}/.profile"
+#if [ -z "\$DISPLAY" ] && [ "\$(tty)" = "/dev/tty1" ]; then
+#    startx
+#fi
+EOF
+
+cat <<EOF > "${USER_HOME}/.xinitrc"
+fcitx5 &
+exec mate-session
+EOF
+
+chmod +x "${USER_HOME}/.xinitrc"
+chown live:live "${USER_HOME}/.profile" "${USER_HOME}/.xinitrc"
+
+

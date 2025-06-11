@@ -10,7 +10,7 @@ LB_BINARY_FILESYSTEM="fat32"
 LB_APT_INDICES="true"
 
 # Set boot parameters
-LB_BOOTAPPEND_LIVE="boot=live components loglevel=3"
+LB_BOOTAPPEND_LIVE="boot=live components locales=ja_JP.UTF-8"
 
 # Set boot parameters
 LB_BOOTAPPEND_INSTALL=""

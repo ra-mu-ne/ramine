@@ -20,7 +20,7 @@ clean:
 
 # Check if we need to run lb config by looking at chroot directory
 chroot: config/*
-	sudo $(LB) config
+	sudo $(LB) config --bootappend-live "boot=live components locales=ja_JP.UTF-8"
 
 # ISO depends on chroot being set up
 $(ISO_FILE): chroot

@@ -17,5 +17,5 @@ Pin-Priority: 1000
 ' | sudo tee /etc/apt/preferences.d/mozilla
 
 sudo apt update
-sudo apt install firefox
+sudo apt install -y firefox-l10n-ja
 
