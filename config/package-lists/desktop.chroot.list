@@ -2,6 +2,7 @@ task-japanese
 
 mate-desktop-environment
 mate-utils
+dconf-cli
 
 lightdm
 lightdm-gtk-greeter
@@ -9,6 +10,7 @@ xorg
 
 mpv
 strawberry
+synaptic
 libreoffice
 
 fcitx5
