@@ -1,10 +1,10 @@
 [org/mate/desktop/interface]
-gtk-theme='Arc-Dark'
+gtk-theme='Arc-Lighter'
 icon-theme='Papirus'
 font-name='Sans 10'
 
 [org/mate/marco/general]
-theme='Arc-Dark'
+theme='Arc-Lighter'
 titlebar-font='Sans Bold 10'
 
 

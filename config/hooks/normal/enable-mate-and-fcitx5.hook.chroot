@@ -30,7 +30,7 @@ EOF
 # 壁紙設定
 tee "/etc/dconf/db/local.d/02-background" <<EOF
 [org/mate/desktop/background]
-picture-filename='/etc/ramine/wallpapers/books.jpg'
+picture-filename='/etc/ramine/wallpapers/minimalist.jpg'
 picture-options='stretched'
 primary-color='#2e3436'
 secondary-color='#2e3436'

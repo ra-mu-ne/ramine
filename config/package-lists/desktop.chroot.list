@@ -5,7 +5,6 @@ mate-utils
 dconf-cli
 
 lightdm
-lightdm-gtk-greeter
 xorg
 
 mpv
