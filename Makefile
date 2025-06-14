@@ -20,7 +20,7 @@ clean:
 
 # Check if we need to run lb config by looking at chroot directory
 chroot: config/*
-	sudo $(LB) config --bootappend-live "boot=live components locales=ja_JP.UTF-8"
+	sudo $(LB) config --bootappend-live "boot=live username=live components locales=ja_JP.UTF-8" --debian-installer none 
 
 # ISO depends on chroot being set up
 $(ISO_FILE): chroot
@@ -35,5 +35,5 @@ with-qemu: $(ISO_FILE)
 		-drive file=$(ISO_FILE),media=cdrom \
 		-boot d \
 		-netdev user,id=net0 \
-		-device virtio-net,netdev=net0
+		-device virtio-net,netdev=net0 &
 

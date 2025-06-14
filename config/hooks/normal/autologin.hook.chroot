@@ -9,6 +9,8 @@ gpasswd -a live autologin
 
 cat <<EOF > "/etc/lightdm/lightdm.conf"
 [Seat:*]
+autologin-guest=false
+allow-guest=false
 autologin-user=live
 autologin-user-timeout=0
 autologin-session=mate-session
@@ -16,3 +18,13 @@ greeter-session=lightdm-gtk-greeter
 greeter-hide-users=false
 greeter-allow-guest=false
 EOF
+
+
+cat <<EOF > "/etc/lightdm/lightdm-gtk-greeter.conf"
+[greeter]
+background=/usr/share/backgrounds/ramine-wallpaper.png
+theme-name=Arc-Light
+icon-theme-name=Papirus
+EOF
+
+

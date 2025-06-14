@@ -2,15 +2,12 @@ task-japanese
 
 mate-desktop-environment
 mate-utils
+papirus-icon-theme
+arc-theme
 dconf-cli
 
 lightdm
 xorg
-
-mpv
-strawberry
-synaptic
-libreoffice
 
 fcitx5
 fcitx5-mozc
