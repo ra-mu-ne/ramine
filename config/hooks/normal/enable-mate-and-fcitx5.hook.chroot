@@ -13,6 +13,26 @@ X-GNOME-Autostart-enabled=true
 Comment=Fcitx5 Input Method Framework
 EOF
 
+# calamaresを自動起動
+tee "/etc/xdg/autostart/calamares.desktop" <<EOF
+[Desktop Entry]
+Name=Install Ramine
+Exec=sudo calamares
+Icon=calamares
+Type=Application
+X-GNOME-Autostart-enabled=true
+Comment=Install Ramine Linux
+EOF
+
+tee "/usr/share/applications/calamares.desktop" <<EOF
+[Desktop Entry]
+Name=Install Ramine Linux
+Exec=sudo calamares
+Icon=calamares
+Type=Application
+Categories=System;
+EOF
+
 # dconf設定ディレクトリの作成
 mkdir -p /etc/dconf/db/local.d
 mkdir -p /etc/dconf/profile

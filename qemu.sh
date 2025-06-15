@@ -1,12 +1,15 @@
 #!/bin/bash
 
 qemu-system-x86_64 \
-		-enable-kvm \
-		-cpu host \
-		-smp cores=6,threads=2 \
-		-m 4096 \
-		-drive file=ramine-amd64.hybrid.iso,media=cdrom \
-		-boot d \
-		-netdev user,id=net0 \
-		-device virtio-net,netdev=net0
+    -machine q35 \
+    -enable-kvm \
+    -cpu host \
+    -smp 6 \
+    -m 4G \
+    -device ich9-intel-hda,id=sound0 \
+    -device hda-duplex,bus=sound0.0 \
+    -netdev user,id=net0 \
+    -device virtio-net,netdev=net0 \
+    -cdrom ramine-amd64.hybrid.iso \
+    -boot d
 

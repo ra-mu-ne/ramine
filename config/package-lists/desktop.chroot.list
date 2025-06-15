@@ -6,6 +6,14 @@ papirus-icon-theme
 arc-theme
 dconf-cli
 
+pipewire
+pipewire-audio
+pipewire-pulse
+wireplumber
+libspa-0.2-bluetooth
+libspa-0.2-jack
+pavucontrol
+
 lightdm
 xorg
 
