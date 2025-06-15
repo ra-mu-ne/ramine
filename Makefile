@@ -20,7 +20,10 @@ clean:
 
 # Check if we need to run lb config by looking at chroot directory
 chroot: config/*
-	sudo $(LB) config --bootappend-live "boot=live username=live components locales=ja_JP.UTF-8" --debian-installer none 
+	sudo $(LB) config \
+		--bootappend-live \
+		"boot=live username=live components locales=ja_JP.UTF-8" \
+		--debootstrap-options "" 
 
 # ISO depends on chroot being set up
 $(ISO_FILE): chroot

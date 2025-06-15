@@ -58,7 +58,7 @@ LB_SYSTEM="live"
 LB_IMAGE_NAME="ramine"
 
 # Set options to use with apt
-APT_OPTIONS="--yes -o Acquire::Retries=5"
+APT_OPTIONS="-o APT::Get::Assume-Yes=true"
 
 # Set options to use with aptitude
 APTITUDE_OPTIONS="--assume-yes -o Acquire::Retries=5"

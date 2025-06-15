@@ -3,5 +3,8 @@ wget
 curl
 gnupg
 flatpak
+git
+squashfs-tools
+rsync
 
 

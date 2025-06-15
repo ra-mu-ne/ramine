@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+
+printf "/etc/calamares:" 
+if [[ -d "/etc/calamares" ]]; then
+  printf "remove: "
+  rm -rf /etc/calamares
+  echo "ok"
+else
+  echo "no"
+fi
+
+git clone https://github.com/ra-mu-ne/calamares-settings-ramine.git /etc/calamares
+

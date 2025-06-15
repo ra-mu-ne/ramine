@@ -7,9 +7,9 @@ ln -sf /lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.s
 groupadd -r autologin
 gpasswd -a live autologin
 
+mv /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
 cat <<EOF > "/etc/lightdm/lightdm.conf"
 [Seat:*]
-autologin-guest=false
 allow-guest=false
 autologin-user=live
 autologin-user-timeout=0
@@ -22,8 +22,8 @@ EOF
 
 cat <<EOF > "/etc/lightdm/lightdm-gtk-greeter.conf"
 [greeter]
-background=/usr/share/backgrounds/ramine-wallpaper.png
-theme-name=Arc-Light
+background=/etc/ramine/wallpapers/ramine-wallpaper.png
+theme-name=Arc
 icon-theme-name=Papirus
 EOF
 
