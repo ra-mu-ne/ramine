@@ -1,7 +1,10 @@
 # Ramine Linux
 
 <p align="center">
-  <img src="./docs/image/ramine-logo.png" alt="Ramine Linux Logo" width="270">
+  <img src="./docs/image/ramine-logo.png" alt="Ramine Linux Logo" width="260">
+</p>
+<p align="center">
+  <a href="./docs/ja.md">日本語版</a>
 </p>
 
 **A lightweight, beautiful, and Japanese-ready Linux distribution based on Debian.**  
