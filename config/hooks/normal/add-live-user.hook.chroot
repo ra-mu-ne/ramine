@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # liveユーザー作成 (パスワードなし、ホームディレクトリ作成)
 useradd -m -s /bin/bash live

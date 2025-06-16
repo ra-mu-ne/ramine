@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 apt install -y lightdm lightdm-gtk-greeter
 ln -sf /lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
