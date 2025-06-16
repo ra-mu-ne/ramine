@@ -44,7 +44,7 @@ Ramine Linux is a lightweight, user-friendly Linux distribution based on Debian 
 ## 📦 Included Software
 
 - **MATE Desktop Environment**
-- **Firefox ESR / Latest Stable**
+- **Firefox Latest Stable**
 - **Fcitx5 + Mozc (Japanese IME)**
 - **Flatpak**
 - Core Debian utilities
