@@ -70,7 +70,7 @@ Ramine Linuxは、Debian 12（"Bookworm"）をベースとした軽量でユー�
 ---
 
 ## 📜 ライセンス
-このプロジェクトは[GPLv3](https://github.com/ra-mu-ne/ramine/blob/main/LICENSE)ライセンスの下で提供されています。
+このプロジェクトは[GPLv3](https://github.com/ra-mu-ne/ramine/blob/master/LICENSE)ライセンスの下で提供されています。
 
 ---
 
