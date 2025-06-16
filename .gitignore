@@ -6,4 +6,5 @@
 /.lock
 /.build
 /ramine-*
+/vm
 
