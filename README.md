@@ -83,7 +83,7 @@ Please open an [issue](https://github.com/ra-mu-ne/ramine/issues) or submit a pu
 
 ## 📜 License
 
-This project is licensed under the [GPLv3](https://github.com/ra-mu-ne/ramine/blob/main/LICENSE).
+This project is licensed under the [GPLv3](https://github.com/ra-mu-ne/ramine/blob/master/LICENSE).
 
 ---
 
