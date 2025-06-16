@@ -1,6 +1,6 @@
 # Ramine Linux
 <p align="center">
-  <img src="./docs/image/ramine-logo.png" alt="Ramine Linux Logo" width="270">
+  <img src="./image/ramine-logo.png" alt="Ramine Linux Logo" width="270">
 </p>
 
 **Debianベースの軽量で美しい日本語対応Linuxディストリビューション**  
