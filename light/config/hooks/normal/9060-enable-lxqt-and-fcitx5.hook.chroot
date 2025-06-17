@@ -1,0 +1,155 @@
+#!/bin/bash
+set -e
+
+
+mkdir -p /etc/xdg/autostart
+tee "/etc/xdg/autostart/fcitx5.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Fcitx5
+Exec=fcitx5
+Icon=fcitx
+X-GNOME-Autostart-enabled=true
+Comment=Fcitx5 Input Method Framework
+EOF
+
+tee "/etc/xdg/autostart/nmapplet.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=NetworkManager applet
+Exec=nm-applet
+X-GNOME-Autostart-enabled=true
+Comment=Network Manager applet
+EOF
+
+
+
+tee "/etc/xdg/autostart/calamares.desktop" <<EOF
+[Desktop Entry]
+Name=Install Ramine
+Exec=sudo calamares
+Icon=calamares
+Type=Application
+X-GNOME-Autostart-enabled=true
+Comment=Install Ramine Linux
+EOF
+
+tee "/usr/share/applications/calamares.desktop" <<EOF
+[Desktop Entry]
+Name=Install Ramine Linux
+Exec=sudo calamares
+Icon=calamares
+Type=Application
+Categories=System;
+EOF
+
+
+mkdir -p /etc/xdg/lxqt
+mkdir -p /etc/xdg/pcmanfm-qt/lxqt
+
+
+tee "/etc/xdg/pcmanfm-qt/lxqt/settings.conf" <<EOF
+[Desktop]
+Wallpaper=/etc/ramine/wallpapers/ramine-wallpaper.png
+WallpaperMode=stretch
+BgColor=#2e3436
+FgColor=#ffffff
+ShadowColor=#000000
+EOF
+
+
+tee "/etc/xdg/lxqt/lxqt.conf" <<EOF
+[General]
+theme=Arc
+icon_theme=Papirus
+
+[Qt]
+style=gtk2
+EOF
+
+
+tee "/etc/xdg/lxqt/lxqt-config.conf" <<EOF
+[General]
+theme=Arc
+icon_theme=Papirus
+EOF
+
+
+USER_HOME="/home/live"
+if [ -d "$USER_HOME" ]; then
+    
+    mkdir -p "${USER_HOME}/.config/lxqt"
+    mkdir -p "${USER_HOME}/.config/pcmanfm-qt/lxqt"
+    
+    
+    cat <<EOF > "${USER_HOME}/.xinitrc"
+#!/bin/bash
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+fcitx5 &
+exec startlxqt
+EOF
+
+    cat <<EOF > "${USER_HOME}/.profile"
+#!/bin/bash
+if [[ \$(tty) = /dev/tty1 ]]; then
+	startx
+fi
+EOF
+
+    
+    cat <<EOF > "${USER_HOME}/.config/pcmanfm-qt/lxqt/settings.conf"
+[Desktop]
+Wallpaper=/etc/ramine/wallpapers/ramine-wallpaper.png
+WallpaperMode=stretch
+BgColor=#2e3436
+FgColor=#ffffff
+ShadowColor=#000000
+EOF
+
+    
+    cat <<EOF > "${USER_HOME}/.config/lxqt/lxqt.conf"
+[General]
+theme=Arc
+icon_theme=Papirus
+
+[Qt]
+style=gtk2
+EOF
+
+    
+    chmod +x "${USER_HOME}/.xinitrc"
+    chmod +x "${USER_HOME}/.profile"
+    
+    
+    chown -R live:live "${USER_HOME}/.config" 2>/dev/null || true
+    chown -R live:live "${USER_HOME}/.xinitrc" 2>/dev/null || true
+    chown -R live:live "${USER_HOME}/.profile" 2>/dev/null || true
+fi
+
+
+tee "/etc/environment" <<EOF
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+EOF
+
+mkdir -p /etc/xdg/lxqt/autostart
+if [ ! -f "/etc/xdg/lxqt/autostart/fcitx5.desktop" ]; then
+    cp "/etc/xdg/autostart/fcitx5.desktop" "/etc/xdg/lxqt/autostart/"
+fi
+
+tee "/etc/gtk-3.0/settings.ini" <<EOF
+[Settings]
+gtk-theme-name=Arc
+gtk-icon-theme-name=Adwaita
+gtk-font-name=Sans 10
+EOF
+
+tee "/etc/gtk-2.0/gtkrc" <<EOF
+gtk-theme-name="Arc"
+gtk-icon-theme-name="Adwaita"
+gtk-font-name="Sans 10"
+EOF
+

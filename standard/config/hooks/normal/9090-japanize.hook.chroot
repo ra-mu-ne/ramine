@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+
+ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+dpkg-reconfigure tzdata
+
+cat <<EOF >> "/etc/environment"
+GTK_IM_MODULE=fcitx5
+QT_IM_MODULE=fcitx
+XMODIFIERS="@im=fcitx5"
+
+EOF
+
+mkdir -p /etc/skel/.config/fcitx5/
+
+cat <<EOF >> "/etc/skel/.config/fcitx5/profile"
+[Group1]
+Default Layout=us
+IMList=mozc
+
+EOF
+
+

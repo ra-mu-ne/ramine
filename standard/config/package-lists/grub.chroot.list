@@ -1,0 +1,8 @@
+grub-common
+grub2-common
+
+grub-pc-bin
+grub-efi-amd64-bin
+
+efibootmgr
+

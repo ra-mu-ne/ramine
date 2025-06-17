@@ -1,0 +1,10 @@
+/auto
+/cache
+/chroot*
+/local
+/binary*
+/.lock
+/.build
+/ramine-*
+/vm
+

@@ -1,0 +1,106 @@
+#!/bin/bash
+set -e
+
+# fcitx5の自動起動設定
+mkdir -p /etc/xdg/autostart
+tee "/etc/xdg/autostart/fcitx5.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Fcitx5
+Exec=fcitx5
+Icon=fcitx
+X-GNOME-Autostart-enabled=true
+Comment=Fcitx5 Input Method Framework
+EOF
+
+# nm-appletを自動起動
+mkdir -p /etc/xdg/autostart
+tee "/etc/xdg/autostart/nmapplet.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=nm-applet
+Exec=nm-applet
+X-GNOME-Autostart-enabled=true
+Comment=Network Mangaer applet
+EOF
+
+# calamaresを自動起動
+tee "/etc/xdg/autostart/calamares.desktop" <<EOF
+[Desktop Entry]
+Name=Install Ramine
+Exec=sudo calamares
+Icon=calamares
+Type=Application
+X-GNOME-Autostart-enabled=true
+Comment=Install Ramine Linux
+EOF
+
+tee "/usr/share/applications/calamares.desktop" <<EOF
+[Desktop Entry]
+Name=Install Ramine Linux
+Exec=sudo calamares
+Icon=calamares
+Type=Application
+Categories=System;
+EOF
+
+# dconf設定ディレクトリの作成
+mkdir -p /etc/dconf/db/local.d
+mkdir -p /etc/dconf/profile
+
+# ユーザープロファイル設定
+tee "/etc/dconf/profile/user" <<EOF
+user-db:user
+system-db:local
+EOF
+
+# 壁紙設定
+tee "/etc/dconf/db/local.d/02-background" <<EOF
+[org/mate/desktop/background]
+picture-filename='/etc/ramine/wallpapers/ramine-wallpaper.png'
+picture-options='stretched'
+primary-color='#2e3436'
+secondary-color='#2e3436'
+EOF
+
+# dconfデータベースの更新
+for i in {1..10}
+do
+  printf "%d: dconf update\n" "$i"
+  dconf update
+done
+
+# liveユーザーのホームディレクトリ設定
+USER_HOME="/home/live"
+if [ -d "$USER_HOME" ]; then
+    # .xinitrc設定
+    cat <<EOF > "${USER_HOME}/.xinitrc"
+#!/bin/bash
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+fcitx5 &
+exec mate-session
+EOF
+    cat <<EOF > "${USER_HOME}/.profile"
+#!/bin/bash
+if [[ $(tty) = /dev/tty1 ]]; then
+	startx
+fi
+EOF
+    chmod +x "${USER_HOME}/.xinitrc"
+    chmod +x "${USER_HOME}/.profile"
+    # 所有権の設定
+    chown -R live:live "${USER_HOME}/.xinitrc" 2>/dev/null || true
+    chown -R live:live "${USER_HOME}/.profile" 2>/dev/null || true
+fi
+
+
+
+# 環境変数の設定
+tee "/etc/environment" <<EOF
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+EOF
+
