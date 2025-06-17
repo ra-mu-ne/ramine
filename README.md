@@ -29,6 +29,28 @@ Ramine Linux is a lightweight, user-friendly Linux distribution based on Debian 
 
 ---
 
+## 🎨 Editions
+
+Ramine Linux provides two editions to suit various hardware and user needs:
+
+### 🖥️ **Standard Edition (MATE)**
+
+* **Default Edition** focused on balance between performance and modern appearance.
+* Uses **MATE Desktop Environment**, providing a familiar and clean GTK-based interface.
+* Beautiful **Arc GTK theme** and **Papirus icon set** pre-configured.
+* Suitable for most modern and mid-range systems.
+* Full Japanese language support (pre-configured).
+
+### 💡 **Light Edition (LXQt)**
+
+* Designed for **ultra-low resource environments** such as older or legacy PCs.
+* Utilizes **LXQt Desktop Environment** with minimal visual effects to maximize performance.
+* Prioritizes **lightweight operation over appearance**.
+* Recommended for systems with extremely limited memory or CPU resources.
+* Still includes Japanese language and input support (Fcitx5 + Mozc).
+
+---
+
 ## 🚀 Download
 
 🔗 [Latest Release (1.0-beta)](https://github.com/ra-mu-ne/ramine/releases)
